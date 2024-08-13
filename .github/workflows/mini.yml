@@ -28,8 +28,7 @@ jobs:
 
     - name: Install dependencies1
       run: yarn
-    - name: Install dependencies2
-      run: yarn watch
+
     - name: Install dependencies3
       run: yarn install
 

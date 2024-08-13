@@ -21,17 +21,17 @@ jobs:
       with:
         node-version: '20'
 
- 
-
-    - name: Install dependencies1
-      run: yarn
-
-    - name: Install dependencies3
+    - name: Install dependencies
       run: yarn install
 
-    - name: Build VSCode
+    - name: Install gulp CLI
       run: npm install --global gulp-cli
-    - name: Build VSCode2
+
+    - name: Build VSCode
       run: gulp vscode-win32-x64
 
-
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: vscode-x64-build
+        path: .build/win32-x64/archive/VSCode-win32-x64.zip

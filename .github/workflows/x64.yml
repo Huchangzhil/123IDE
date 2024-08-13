@@ -21,8 +21,7 @@ jobs:
       with:
         node-version: '20'
 
-    - name: Install system dependencies
-      run:  npm install --global windows-build-tools --vs2015
+ 
 
     - name: Install dependencies1
       run: yarn

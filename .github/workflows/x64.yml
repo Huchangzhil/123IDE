@@ -29,9 +29,10 @@ jobs:
 
     - name: Build VSCode
       run: gulp vscode-win32-x64
-
+    - name: tar
+      run: tar -cf theout.tar.gz ./.build
     - name: Upload build artifact
       uses: actions/upload-artifact@v3
       with:
         name: vscode-x64-build
-        path: .build/win32-x64/archive/VSCode-win32-x64.zip
+        path: ./theout.tar.gz

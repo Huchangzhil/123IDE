@@ -25,7 +25,9 @@ jobs:
     - name: Install system dependencies
       run: |
         sudo apt-get update
+        sudo apt-get install -y zip
         sudo apt-get install -y libkrb5-dev
+      continue-on-error: true
 
 
     - name: Install dependencies
@@ -34,9 +36,14 @@ jobs:
     - name: Build VSCode
       run: yarn run gulp vscode-win32-x64
       continue-on-error: true
-
+    - name: cout dir
+      run: dir
+      continue-on-error: true
+    - name: zip
+      run: zip -r theout.zip ./.build/
+      continue-on-error: true
     - name: Upload build artifact
       uses: actions/upload-artifact@v3
       with:
         name: vscode-x64-build
-        path: .build/win32-x64/archive/VSCode-win32-x64.zip
+        path: ./theout.zip

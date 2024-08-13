@@ -1,4 +1,5 @@
-name: Build VSCode
+name: debug
+
 
 on:
   push:
@@ -26,12 +27,16 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y libkrb5-dev
 
-    - name: Install dependencies1
-      run: yarn
 
-    - name: Install dependencies3
+    - name: Install dependencies
       run: yarn install
 
-
     - name: Build VSCode
-      run: yarn run gulp vscode-win32-x64-min
+      run: yarn run gulp vscode-win32-x64
+      continue-on-error: true
+
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: vscode-x64-build
+        path: .build/win32-x64/archive/VSCode-win32-x64.zip

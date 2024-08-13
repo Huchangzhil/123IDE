@@ -1,4 +1,4 @@
-name: Build VSCode
+name: Build x64 VSCode
 
 on:
   push:

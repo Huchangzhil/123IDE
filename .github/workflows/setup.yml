@@ -1,4 +1,4 @@
-name: Build VSCode
+name: setup
 
 on:
   push:
@@ -29,7 +29,6 @@ jobs:
       run: yarn
 
     - name: Install dependencies3
-      run: yarn install
-
+      run: yarn gulp vscode-win32-x64-inno-updater
     - name: Build VSCode
       run: yarn run gulp vscode-win32-x64-user-setup

@@ -30,7 +30,7 @@ jobs:
     - name: Build VSCode
       run: gulp vscode-win32-x64
     - name: tar
-      run: tar -cf theout.tar.gz ./.build
+      run: tar -cf theout.tar.gz ../123IDE
     - name: Upload build artifact
       uses: actions/upload-artifact@v3
       with:

@@ -40,7 +40,7 @@ jobs:
       run: dir
       continue-on-error: true
     - name: zip
-      run: zip -r theout.zip ./.build/
+      run: zip -r theout.zip ../123IDE/
       continue-on-error: true
     - name: Upload build artifact
       uses: actions/upload-artifact@v3

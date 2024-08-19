@@ -22,15 +22,17 @@ jobs:
         node-version: '20'
 
     - name: Install dependencies
-      run: yarn install
+      run: |
+          New-Item -ItemType Directory -Path "tempbuild"
+          Get-ChildItem -Exclude "tempbuild" | Move-Item -Destination "tempbuild"
+          cd tempbuild
+          yarn install
+          npm install --global gulp-cli
+          gulp vscode-win32-x64
+          cd ..
 
-    - name: Install gulp CLI
-      run: npm install --global gulp-cli
-
-    - name: Build VSCode
-      run: gulp vscode-win32-x64
     - name: tar
-      run: tar -czf theout.tar.gz .
+      run: tar -czf theout.tar.gz ./VSCode-win32-x64
 
     - name: Upload build artifact
       uses: actions/upload-artifact@v3
